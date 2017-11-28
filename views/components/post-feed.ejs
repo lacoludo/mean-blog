@@ -1,0 +1,23 @@
+<!-- Utiliser une itération en EJS -->
+<section>
+    <% for(let item of collection) { %>
+        <article>
+            <!-- Vérifier le type de post pour afficher le bon contenu -->
+            <% if(item.type === 'IMG') { %>
+                <figure>
+                    <img src="<%= item.content %>">
+                    <figcaption><%= item.title %></figcaption>
+                </figure>
+
+            <% } else if( item.type === 'QUOTE' ) {  %>
+                <q><%= item.title %></q>
+
+            <% } else { %>
+                <iframe src="https://www.youtube.com/embed/<%= item.content %>"></iframe>
+                <p><%= item.title %></p>
+            <% }  %>
+            <a href="/post/<%= item._id %>">Afficher l'article</a>
+            <p><%= item._id %></p>
+        </article>
+    <% } %>
+</section>

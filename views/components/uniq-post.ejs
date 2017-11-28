@@ -1,0 +1,19 @@
+<h2> <%= post.title %> </h2>
+<article>
+    <!-- Vérifier le type de post pour afficher le bon contenu -->
+    <% if(post.type === 'IMG') { %>
+        <figure>
+            <img src="<%= post.content %>">
+            <figcaption><%= post.title %></figcaption>
+        </figure>
+
+    <% } else if( post.type === 'QUOTE' ) {  %>
+        <q><%= post.title %></q>
+
+    <% } else { %>
+        <iframe src="https://www.youtube.com/embed/<%= post.content %>"></iframe>
+        <p><%= post.title %></p>
+    <% }  %>
+
+    <a href="/">Retour</a>
+</article>
